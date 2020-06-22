@@ -1,5 +1,5 @@
 import LoginScene from '../screens/LoginScene';
-import { handleLogin } from '../actions/user';
+import { loginAction } from '../actions/user';
 import { connect } from 'react-redux';
 
 const mapStateToProps = ({ auth }) => ({
@@ -7,7 +7,7 @@ const mapStateToProps = ({ auth }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleLogin: payload => dispatch(handleLogin(payload))
+  handleLogin: payload => dispatch(loginAction(payload))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScene);
