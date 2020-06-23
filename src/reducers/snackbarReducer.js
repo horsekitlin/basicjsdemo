@@ -1,4 +1,4 @@
-import {snackbarState} from './initialState';
+import { snackbarState } from './initialState';
 import types from '../constants/actionTypes';
 
 const openSnackBar = (snackbar, payload) => {
@@ -17,7 +17,7 @@ export default function reducer(snackbar = snackbarState, { type, payload }) {
   switch (type) {
     case types.OPEN_SNACK_BAR:
       return openSnackBar(snackbar, payload);
-    case types.OPEN_SNACK_BAR:
+    case types.CLOSE_SNACK_BAR:
       return closeSnackBar(snackbar);
     default:
       return snackbar;

@@ -1,13 +1,18 @@
 import React from "react";
+import { CircularProgress } from '@material-ui/core';
 import DateRange from "../../components/DateRange";
+import LayoutWrapper from '../../components/LayoutWrapper';
 
-const HomeScene = props => {
+const HomeScreen = ({ isLoading }) => {
+
+  if (isLoading) return <CircularProgress />;
+
   return(
-    <div>
-      Home SceneHome
-      <DateRange onDateChange={console.log}/>
-    </div>
+    <LayoutWrapper>
+      Home Screen
+      <DateRange onDateChange={console.log('HomeScreen')}/>
+    </LayoutWrapper>
   );
 };
 
-export default HomeScene;
+export default HomeScreen;

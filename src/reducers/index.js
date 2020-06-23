@@ -1,3 +1,4 @@
+import { createContext } from 'react';
 import { combineReducers } from 'redux';
 import nav from './navReducer';
 import auth from './authReducer';
@@ -5,8 +6,9 @@ import user from './userReducer';
 import route from './routeReducer';
 import setting from './settingReducer';
 import snackbar from './snackbarReducer';
+import initialState from './authReducer';
 
-const appReducer = combineReducers({
+const reducer = combineReducers({
   nav,
   user,
   auth,
@@ -15,8 +17,6 @@ const appReducer = combineReducers({
   snackbar
 });
 
-const rootReducer = (state, action) => {
-  return appReducer(state, action);
-};
+export const ReducerContext = createContext(initialState);
 
-export default rootReducer;
+export default reducer;

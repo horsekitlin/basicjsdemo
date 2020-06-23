@@ -6,8 +6,8 @@ const styles = theme => ({
     flexGrow: 1
   },
   paper: {
-    margin: theme.spacing.unit * 3,
-    padding: theme.spacing.unit * 3,
+    margin:  theme.spacing(3),
+    padding:  theme.spacing(3),
     color: theme.palette.text.secondary,
     borderRadius: theme.shape.borderRadius,
     boxShadow: theme.oshadows[2],
@@ -16,7 +16,7 @@ const styles = theme => ({
       borderRadius: 0,
       boxShadow: 'none',
       borderTop: `1px solid ${theme.palette.grey[100]}`,
-      padding: theme.spacing.unit,
+      padding: theme.spacing(1),
     }
   }
 })

@@ -1,5 +1,5 @@
 import React from 'react';
-import AlertDialogWrapper from '../../components/AlertDialogWrapper';
+import AlertDialogWrapper from '../../AlertDialogWrapper';
 
 const AlertDialog = ({
   title,

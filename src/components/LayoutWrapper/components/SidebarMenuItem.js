@@ -4,7 +4,7 @@ import ChevronRight from '@material-ui/icons/ChevronRight';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import {Link} from 'react-router-dom';
 import { ListItem, ListItemIcon, ListItemText, Collapse, List, withStyles } from '@material-ui/core';
-import Colors from '../../constants/colors.config'
+import Colors from '../../../constants/colors.config'
 
 const styles = theme => ({
   icon: {
@@ -103,7 +103,7 @@ const styles = theme => ({
   },
   itemIcon: {
     color: Colors.greymiddle,
-    width: theme.spacing.unit * 3,
+    width:  theme.spacing(3),
     margin: 0
   },
   itemIconActive: {

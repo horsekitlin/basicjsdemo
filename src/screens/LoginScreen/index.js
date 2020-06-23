@@ -1,6 +1,6 @@
-import LoginScene from './view';
 import { connect } from 'react-redux';
-import { loginAction } from '../../actions/user';
+import { loginAction } from '../../actions/authActions';
+import LoginScreen from './view';
 
 const mapStateToProps = ({ auth }) => ({
   auth
@@ -12,4 +12,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScene);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

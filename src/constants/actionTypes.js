@@ -16,6 +16,8 @@ const layoutActionTypes = [
 
 export const basicAsyncActionTypes = [
   'LOGIN',
+  'LOGOUT',
+  'REFRESH_TOKEN'
 ];
 
 const asyncActionTypes = basicAsyncActionTypes.reduce((result, actionTypes)=>{

@@ -4,8 +4,8 @@ import EditIcon from "@material-ui/icons/Edit";
 import TuneIcon from "@material-ui/icons/Tune";
 import SettingsIcon from "@material-ui/icons/Settings";
 import AllInboxIcon from "@material-ui/icons/AllInbox";
-import HomeContainer from "../containers/HomeContainer";
-import ErrorPageContainer from "../containers/ErrorPageContainer";
+import HomeContainer from "../screens/HomeScreen";
+import ErrorPageContainer from "../screens/ErrorPageScreen";
 
 const routerConfig = [
   {

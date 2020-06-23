@@ -1,10 +1,14 @@
 import types from '../constants/actionTypes';
 
+export const handleSidebar = payload => ({
+  type: types.HANDLE_SIDEBAR,
+  payload
+});
+
 export const switchSideBarAction = payload => ({
     type: types.SIDEBAR_OPEN,
     payload
   });
-
 
 export const switchMenuAction = payload => ({
     type: types.SIDEBAR_MENU_OPEN,

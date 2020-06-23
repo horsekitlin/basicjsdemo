@@ -1,4 +1,4 @@
-import LayoutWrapper from './view';
+import GlobalArea from './view';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { refreshTokenAction } from '../../actions/authActions';
@@ -41,5 +41,5 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(LayoutWrapper));
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(GlobalArea));
 

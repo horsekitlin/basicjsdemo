@@ -55,7 +55,7 @@ class DateRange extends React.Component {
 
     return (
       <div>
-        <Typography component='span' color="inherit" inline>創建時間</Typography>
+        <Typography component='span' color="inherit" display='inline'>創建時間</Typography>
         <DatePicker
           className='date_picker_input_field'
           selected={startDate}
@@ -64,7 +64,7 @@ class DateRange extends React.Component {
           endDate={endDate}
           onChange={this.handleChangeStart}
         />
-        <Typography component='span' color="inherit" inline>至</Typography>
+        <Typography component='span' color="inherit" display='inline'>至</Typography>
         <DatePicker
           className='date_picker_input_field'
           selected={endDate}

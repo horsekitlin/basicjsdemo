@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
-import ErrorPage404 from '../screens/ErrorPageScreen';
+import MainScreen from './view';
 
 const mapStateToProps = ({ auth }) => ({
-  auth
+  isAuth: auth.get('isAuth')
 });
 
 const mapDispatchToProps = (dispatch) => ({
   
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(ErrorPage404);
+export default connect(mapStateToProps,mapDispatchToProps)(MainScreen);

@@ -27,7 +27,6 @@ export const snackbarState = fromJS({
   type: "info"
 });
 
-
 export const navState = fromJS({
   isSideBarOpened: false,
   isAlertDialogOpen: false,

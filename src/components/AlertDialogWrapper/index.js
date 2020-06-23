@@ -57,7 +57,7 @@ const style = theme => ({
     textAlign: "center"
   },
   button: {
-    marginRight: theme.spacing.unit * 1.5
+    marginRight:  theme.spacing(1.5)
   },
   dialogFooter: {
     textAlign: "center",
