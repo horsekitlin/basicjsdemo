@@ -5,6 +5,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import {Link} from 'react-router-dom';
 import { ListItem, ListItemIcon, ListItemText, Collapse, List, withStyles } from '@material-ui/core';
 import Colors from '../../../constants/colors.config'
+import ReduxStore from '../../../store/configureStore';
 
 const styles = theme => ({
   icon: {
@@ -126,7 +127,9 @@ class SidebarMenuItem extends React.Component {
   };
 
   render() {
-    const {classes, parentIcon, parentText, items, id, nav} = this.props;
+    const { classes, parentIcon, parentText, items, id } = this.props;
+    const { nav } = ReduxStore.getState();
+
     const watchedMenu = nav.get('watchedMenu');
     const openParent = (watchedMenu === id);
 

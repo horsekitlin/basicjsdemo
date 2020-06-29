@@ -188,8 +188,7 @@ class LayoutWrapper extends React.Component {
 
   handleLogout = () => {
 
-    const { auth } = this.props;
-    const token = auth.getIn(['info','token']);
+    const { token } = this.props;
     const payload = {
       customHeaders: { Authorization: token }
     };
@@ -206,8 +205,7 @@ class LayoutWrapper extends React.Component {
   }
 
   handleAlertConfirm = () => {
-    const { nav } = this.props;
-    const alertType = nav.get('alertType');
+    const { alertType } = this.props;
     
     switch (alertType) {
       case 'LOGOUT':
@@ -226,41 +224,49 @@ class LayoutWrapper extends React.Component {
   }
 
   render() {
-    const { classes, theme, auth, nav, snackbar, ...other } = this.props;
-    const open = nav.get('isSideBarOpened');
-    const employeeName = 'Admin';//auth.getIn(['info','employeeName']) || '';
-    const roleName = 'administrator';//auth.getIn(['info','roleName']) || '';
-
-    console.log("LayoutWrapper")
+    const {
+      classes,
+      theme,
+      auth,
+      isSideBarOpened,
+      isAlertDialogOpen,
+      alertMessage,
+      employeeName,
+      roleName,
+      open,
+      message,
+      level,
+      ...other
+    } = this.props;
 
     return (
       <ErrorBoundary>
         <div className={classes.root}>
           <AlertDialog
-            title={nav.get('alertMessage')}
-            open={nav.get('isAlertDialogOpen')}
-            level={nav.get('level')}
+            title={alertMessage}
+            open={isAlertDialogOpen}
+            level={level}
             onConfirm={this.handleAlertConfirm}
             onCancel={this.handleAlertCancel}
           />
           <SnackBar
-            open={snackbar.get('open')}
-            message={snackbar.get('message')}
-            level={snackbar.get('level')}
+            open={open}
+            message={message}
+            level={level}
             onClose={this.handleSnackBarClose}
           />
           <AppBar
             position='fixed'
             className={classNames(classes.appBar, {
-              [classes.appBarShift]: open,
+              [classes.appBarShift]: isSideBarOpened,
             })}>
-            <Toolbar disableGutters={!open}>
+            <Toolbar disableGutters={!isSideBarOpened}>
               <IconButton
                 color='inherit'
                 aria-label='Open drawer'
                 onClick={this.handleDrawerOpen}
                 className={classNames(classes.menuButton, {
-                  [classes.hide]: open,
+                  [classes.hide]: isSideBarOpened,
                 })}>
                 <MenuIcon />
               </IconButton>
@@ -282,11 +288,11 @@ class LayoutWrapper extends React.Component {
               <Drawer
                 variant='temporary'
                 className={classNames(classes.drawer, {
-                  [classes.drawerOpen]: open
+                  [classes.drawerOpen]: isSideBarOpened
                 })}
                 classes={{
                   paper: classNames(classes.drawer,{
-                    [classes.drawerOpen]: open
+                    [classes.drawerOpen]: isSideBarOpened
                   }),
                 }}
                 onClose={this.handleDrawerClose}
@@ -298,18 +304,18 @@ class LayoutWrapper extends React.Component {
                   </IconButton>
                 </div>
                 <Divider className={classes.divider}/>
-                <SidebarMenu nav={nav} {...other}/>
+                <SidebarMenu {...other}/>
               </Drawer>
             </Hidden>
             <Hidden xsDown>
               <Drawer
                   variant='permanent'
                   className={classNames(classes.drawer, {
-                    [classes.drawerOpen]: open
+                    [classes.drawerOpen]: isSideBarOpened
                   })}
                   classes={{
                     paper: classNames(classes.drawer,{
-                      [classes.drawerOpen]: open
+                      [classes.drawerOpen]: isSideBarOpened
                     }),
                   }}
                   open={true}>
@@ -317,12 +323,12 @@ class LayoutWrapper extends React.Component {
                     {/* <img className={classes.infoLogo} src={Logo} alt='LOGO'/> */}
                   </div>
                   <Divider className={classes.divider}/>
-                  <SidebarMenu nav={nav} { ...other }/>
+                  <SidebarMenu { ...other }/>
                 </Drawer>
              </Hidden>
           </MuiThemeProvider>
           <main className={classNames(classes.content, {
-            [classes.contentShift]: open,
+            [classes.contentShift]: isSideBarOpened,
           })}>
             <div className={classes.toolbar} />
            {this.props.children}
