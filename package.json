@@ -4,6 +4,9 @@
   "description": "rich pay admin console",
   "private": true,
   "scripts": {
+    "postJSMajorVersion": "npm version major",
+    "postJSMinorVersion": "npm version minor",
+    "postJSPatchVersion": "npm version patch",
     "start": "NODE_PATH=src/ react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
