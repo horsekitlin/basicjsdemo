@@ -12,9 +12,17 @@ import {
 } from '../../actions/navActions';
 
 const mapStateToProps = ({ auth,nav, snackbar }) => ({
-  auth,
-  nav,
-  snackbar,
+  token: auth.getIn(['info','token']),
+  alertType: nav.get('alertType'),
+  isSideBarOpened: nav.get('isSideBarOpened'),
+  alertMessage: nav.get('alertMessage'),
+  level: nav.get('level'),
+  isAlertDialogOpen: nav.get('isAlertDialogOpen'),
+  employeeName: auth.getIn(['info','employeeName']),
+  roleName: auth.getIn(['info','roleName']),
+  open: snackbar.get('open'),
+  message: snackbar.get('message'),
+  level: snackbar.get('level'),
 });
 
 const mapDispatchToProps = (dispatch) => ({

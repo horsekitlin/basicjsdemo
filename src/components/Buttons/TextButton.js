@@ -1,14 +1,12 @@
 import React from 'react'
 import Button from './index';
 
-
-const LineButton = (props) => (
-
+const TextButton = (props) => (
   <Button
     type='button'
-    variant = 'outlined'
+    variant='text'
     {...props}
   />
-)
+);
 
-export default (LineButton)
+export default (TextButton)

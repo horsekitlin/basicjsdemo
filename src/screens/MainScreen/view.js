@@ -9,7 +9,6 @@ import HomeScreen from '../HomeScreen';
 import LoginScreen from '../LoginScreen';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import { AppColors } from '../../constants/colors.config';
-// import GlobalArea from '../GlobalArea';
 // import reduxStore from '../../store/configureStore';
 
 const theme = createMuiTheme({
@@ -65,15 +64,14 @@ const MainScreen = (props) => {
           <Switch>
             <PublicRoute exact path='/login' component={LoginScreen} />
             <PrivateRoute exact path='/' component={HomeScreen} />
-            {/* <PrivateRoute
+            <PrivateRoute
               exact
               path='/home'
               component={HomeScreen}
-            /> */}
+            />
             <Route exact component={ErrorPage} />
           </Switch>
         </Router>
-        {/* <GlobalArea /> */}
       </ErrorBoundary>
     </MuiThemeProvider>
   );

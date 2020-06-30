@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, withStyles } from '@material-ui/core';
-import { Button } from '../Buttons';
+import Button from '../Buttons';
 
 const styles = theme => ({
   panelHeader: {
