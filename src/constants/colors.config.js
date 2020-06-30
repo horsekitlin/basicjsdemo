@@ -34,6 +34,7 @@ export const Colors = {
   menubg: '#212529',
   menubglight: '#2C3237',
   menubgdark: '#16181B',
+  transparent: 'transparent',
 }
 
 export const AppColors = {

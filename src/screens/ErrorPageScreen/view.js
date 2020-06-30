@@ -1,7 +1,8 @@
 import React from "react";
 import { withStyles, Typography } from "@material-ui/core";
 import WarningIcon from "@material-ui/icons/Warning";
-import { Button, FlatButton } from "../../components/Buttons";
+import Button from "../../components/Buttons";
+import FlatButton from "../../components/Buttons/FlatButton";
 import Colors from "../../constants/colors.config";
 
 const styles = theme => ({

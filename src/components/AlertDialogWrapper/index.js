@@ -7,7 +7,7 @@ import WarningIcon from "@material-ui/icons/Warning";
 import ErrorIcon from "@material-ui/icons/Error";
 import InfoIcon from "@material-ui/icons/Info";
 import QuestionIcon from "@material-ui/icons/HelpOutline";
-import { Button } from "../Buttons";
+import Button from "../Buttons";
 import classNames from "classnames";
 
 const variantIcon = {
