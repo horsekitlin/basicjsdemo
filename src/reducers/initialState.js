@@ -1,5 +1,5 @@
-import { fromJS } from "immutable";
-import { createBrowserHistory } from "history";
+import { fromJS } from 'immutable';
+import { createBrowserHistory } from 'history';
 
 const history = createBrowserHistory();
 
@@ -11,7 +11,10 @@ export const userState = fromJS({
 
 export const authState = fromJS({
   isAuth: true,
-  info: {},
+  info: {
+    employeeName: 'administrator',
+    roleName: 'admin',
+  },
   permissions: [],
   isInitial: false,
   loginErrorMsg: ''
@@ -23,10 +26,9 @@ export const settingState = fromJS({
 
 export const snackbarState = fromJS({
   open: false,
-  message: "",
-  type: "info"
+  message: '',
+  type: 'info'
 });
-
 
 export const navState = fromJS({
   isSideBarOpened: false,

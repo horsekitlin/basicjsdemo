@@ -1,13 +1,13 @@
-import React from "react";
-import DateRange from "../../components/DateRange";
+import Home from './view';
+import { connect } from 'react-redux';
 
-const HomeScene = props => {
-  return(
-    <div>
-      Home SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome SceneHome Scene
-      <DateRange onDateChange={console.log}/>
-    </div>
-  );
-};
+const mapStateToProps = ({ user, route }) => ({
+  user,
+  route
+});
 
-export default HomeScene;
+const mapDispatchToProps = dispatch => ({
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
+

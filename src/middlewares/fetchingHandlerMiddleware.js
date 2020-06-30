@@ -1,7 +1,9 @@
 import types from '../constants/actionTypes';
+import { basicAsyncActionTypes } from '../constants/actionTypes';
 
 export const startFetchingMiddleware = store => next => action => {
-  if(action.isAsync) next({type: types.START_FETCHING});
+  const isAsyncAction = basicAsyncActionTypes.includes(action.type);
+  if(isAsyncAction) next({type: types.START_FETCHING});
   return next(action);
 };
 

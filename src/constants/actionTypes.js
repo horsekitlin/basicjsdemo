@@ -1,11 +1,11 @@
 import constants from 'flux-constants';
 
-const syncActions = [
+const syncActionTypes = [
   'LOGOUT',
   'HANDLE_SIDEBAR'
 ];
 
-const layoutActions = [
+const layoutActionTypes = [
   'SIDEBAR_OPEN',
   'SIDEBAR_MENU_OPEN',
   'SHOW_ALERT_DIALOG',
@@ -14,10 +14,23 @@ const layoutActions = [
   'OPEN_SNACK_BAR'
 ]
 
-export const aSyncActions = [
+export const basicAsyncActionTypes = [
   'LOGIN',
-  'LOGIN_SUCCESS',
-  'LOGIN_ERROR',
+  'LOGOUT',
+  'REFRESH_TOKEN'
 ];
 
-export default constants([...syncActions, ...aSyncActions, ...layoutActions]);
+const asyncActionTypes = basicAsyncActionTypes.reduce((result, actionTypes)=>{
+  return [
+    ...result,
+    actionTypes,
+    `${actionTypes}_SUCCESS`,
+    `${actionTypes}_ERROR`,
+  ];
+});
+
+export default constants([
+  ...syncActionTypes,
+  ...asyncActionTypes,
+  ...layoutActionTypes,
+]);

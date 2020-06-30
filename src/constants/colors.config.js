@@ -40,42 +40,45 @@ export const AppColors = {
   primary: {
     main: Colors.primary,
     light: Colors.primarylight,
-    dark: Colors.primarydark
+    dark: Colors.primarydark,
+    contrastText: Colors.white,
   },
   secondary: {
     main: Colors.secondary,
     light: Colors.secondarylight,
-    dark: Colors.secondarydark
+    dark: Colors.secondarydark,
+    contrastText: Colors.greymiddle,
   },
   success: {
     main: Colors.success,
     light: Colors.successlight,
-    dark: Colors.successdark
+    dark: Colors.successdark,
   },
   warning: {
     main: Colors.warning,
     light: Colors.warninglight,
-    dark: Colors.warningdark
+    dark: Colors.warningdark,
   },
   danger: {
     main: Colors.danger,
     light: Colors.dangerlight,
-    dark: Colors.dangerdark
+    dark: Colors.dangerdark,
+
   },
   info: {
     main: Colors.info,
     light: Colors.infolight,
-    dark: Colors.infodark
+    dark: Colors.infodark,
   },
   childRow:{
     main: Colors.rowmiddle,
     light: Colors.rowlight,
-    dark: Colors.rowdark
+    dark: Colors.rowdark,
   },
   default: {
     main: Colors.greymiddle,
     light: Colors.bodybg,
-    dark: Colors.greyheavy
+    dark: Colors.greyheavy,
   }
 }
 
