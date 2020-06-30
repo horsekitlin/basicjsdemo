@@ -1,7 +1,7 @@
 {
-  "name": "richpayerchant",
+  "name": "reactskeleton",
   "version": "1.0.0",
-  "description": "rich pay admin console",
+  "description": "react skeleton",
   "private": true,
   "scripts": {
     "postJSMajorVersion": "npm version major",

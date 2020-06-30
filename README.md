@@ -1,5 +1,5 @@
-## Merchant
-A dashboard for single merchant to manage store information.
+## React Skeleton
+A basic react skelton using Redux-saga.
 
 ## Installation
 ```yarn install```
