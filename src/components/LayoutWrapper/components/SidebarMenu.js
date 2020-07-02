@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { List } from '@material-ui/core';
 import SidebarMenuItem from './SidebarMenuItem';
 import routerConfig from '../../../constants/router.config';
@@ -20,12 +20,24 @@ class SidebarMenu extends React.Component {
     return (
       <List>
         {routerConfig.map(menuItem => {
-          const { id, displayMenu, children = [], icon, title} = menuItem
+          const {
+            id,
+            icon,
+            hide,
+            title,
+            path,
+            displayMenu,
+            children=[],
+          } = menuItem;
+          
+          if(hide) return <Fragment />
+
         return (
          displayMenu
          ? <SidebarMenuItem
             key={id}
             id={id}
+            path={path}
             items={children}
             parentIcon={icon}
             parentText={title}

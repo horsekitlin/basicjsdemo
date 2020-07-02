@@ -13,14 +13,15 @@ import ErrorBoundary from '../ErrorBoundary';
 import SnackBar from '../Snackbar';
 
 const drawerWidth = 200;
+const drawerNotifyWidth = 600;
 
 const darkTheme = createMuiTheme({
   typography: {
-    useNextVariants: true,
+    useNextVariants: true
   },
   palette: {
-    type: 'dark', // Switching the dark mode on is a single property value change.
-  },
+    type: 'dark' // Switching the dark mode on is a single property value change.
+  }
 });
 
 const styles = theme => ({
@@ -36,36 +37,32 @@ const styles = theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    boxShadow: `box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.72)`,
-    borderBottom: '1px solid #2a41ad',
+    boxShadow: `0px 0px 3px rgba(0, 0, 0, 0.72)`,
+    padding: '0px 15px',
+    borderBottom: `1px solid ${Colors.primarydark}`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: drawerWidth,
-      width: `calc(100% - ${drawerWidth}px)`,
-    },
+      duration: theme.transitions.duration.leavingScreen
+    })
   },
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
+      duration: theme.transitions.duration.enteringScreen
     }),
     boxShadow: `0px 0px 3px rgba(0, 0, 0, 0.72)`,
-    borderBottom: '1px solid #2a41ad'
+    borderBottom: `1px solid ${Colors.primarydark}`
   },
   menuButton: {
-    marginLeft: 12,
     marginRight: 36,
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     },
   },
   hide: {
-    display: 'none',   
+    display: 'none',
   },
   drawer: {
     width: 0,
@@ -90,7 +87,7 @@ const styles = theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: 'hidden',
-    width: 0 ,    
+    width: 0,
   },
   title: {
     display: 'none',
@@ -110,37 +107,44 @@ const styles = theme => ({
   toolbar: {
     display: 'flex',
     alignItems: 'center',
-    padding: '0 3px',
-    ...theme.mixins.toolbar,
+    padding: '0 15px',
+    backgroundColor: Colors.primary,
+    borderBottom: '1px solid #2a41ad',
+    ...theme.mixins.toolbar
   },
   content: {
-    flexGrow: 1,    
+    flexGrow: 1,
     paddingLeft: 0,
     backgroundColor: Colors.bodybg,
     transition: theme.transitions.create(['margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
+      duration: theme.transitions.duration.enteringScreen
     }),
     [theme.breakpoints.up('sm')]: {
       marginLeft: drawerWidth
-    }, 
+    },
   },
   contentShift: {
-    marginLeft: 0,    
+    marginLeft: 0,
     transition: theme.transitions.create(['margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
     [theme.breakpoints.up('sm')]: {
       marginLeft: drawerWidth
-    }, 
+    }
+  },
+  contentShiftRight: {
+    [theme.breakpoints.up('sm')]: {
+      marginRight: drawerNotifyWidth,
+    }
   },
   divider: {
     borderBottom: `1px solid ${Colors.menubgdark}`,
-    height:0
+    height: 0
   },
   sideBar: {
-    borderRight:'1px solid #000'
+    borderRight: '1px solid #000'
   },
   infoLogo: {
     width: '172px',
@@ -228,6 +232,7 @@ class LayoutWrapper extends React.Component {
       classes,
       theme,
       auth,
+      watchedMenu,
       isSideBarOpened,
       isAlertDialogOpen,
       alertMessage,
@@ -236,7 +241,7 @@ class LayoutWrapper extends React.Component {
       open,
       message,
       level,
-      ...other
+      ...others
     } = this.props;
 
     return (
@@ -304,7 +309,7 @@ class LayoutWrapper extends React.Component {
                   </IconButton>
                 </div>
                 <Divider className={classes.divider}/>
-                <SidebarMenu {...other}/>
+                <SidebarMenu watchedMenu={watchedMenu} {...others}/>
               </Drawer>
             </Hidden>
             <Hidden xsDown>
@@ -323,7 +328,7 @@ class LayoutWrapper extends React.Component {
                     {/* <img className={classes.infoLogo} src={Logo} alt='LOGO'/> */}
                   </div>
                   <Divider className={classes.divider}/>
-                  <SidebarMenu { ...other }/>
+                  <SidebarMenu watchedMenu={watchedMenu} {...others} />
                 </Drawer>
              </Hidden>
           </MuiThemeProvider>

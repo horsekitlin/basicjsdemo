@@ -6,10 +6,12 @@ import PrivateRoute from '../../components/PrivateRoute';
 import PublicRoute from '../../components/PublicRoute';
 import ErrorPage from '../ErrorPageScreen';
 import HomeScreen from '../HomeScreen';
+import ElementScreen from "../ElementScreen";
 import LoginScreen from '../LoginScreen';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import { AppColors } from '../../constants/colors.config';
 // import reduxStore from '../../store/configureStore';
+import LayoutWrapper from '../../components/LayoutWrapper';
 
 const theme = createMuiTheme({
   typography: {
@@ -59,18 +61,21 @@ const MainScreen = (props) => {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <ErrorBoundary>
+      {/* ErrorBoundary had already in LayoutWrapper, not sure whether should put again or not? */}
+      <ErrorBoundary> 
         <Router>
-          <Switch>
-            <PublicRoute exact path='/login' component={LoginScreen} />
-            <PrivateRoute exact path='/' component={HomeScreen} />
-            <PrivateRoute
-              exact
-              path='/home'
-              component={HomeScreen}
-            />
-            <Route exact component={ErrorPage} />
-          </Switch>
+          <LayoutWrapper>
+            <Switch>
+              <PublicRoute exact path='/login' component={LoginScreen} />
+              <PrivateRoute exact path='/' component={HomeScreen} />
+              <PrivateRoute
+                exact
+                 path='/elements'
+                component={ElementScreen}
+              />
+              <Route exact component={ErrorPage} />
+            </Switch>
+          </LayoutWrapper>
         </Router>
       </ErrorBoundary>
     </MuiThemeProvider>

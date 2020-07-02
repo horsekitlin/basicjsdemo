@@ -19,6 +19,7 @@ const styles = theme => ({
     color: '#808080',
   },
   nested: {
+    paddingLeft: theme.spacing(4),
     backgroundColor: Colors.menubg,
     transition: theme.transitions.create(['border'], {
       easing: theme.transitions.easing.sharp,
@@ -43,6 +44,7 @@ const styles = theme => ({
     color: Colors.bodybg
   },
   parentText: {
+    paddingLeft: 0,
     '& span': {
       color: Colors.greymiddle,
       fontSize: '18px',
@@ -76,7 +78,7 @@ const styles = theme => ({
     }
   },
   parentItemActive: {
-    borderLeft: `3px solid ${Colors.handling}`,
+    borderLeft: `3px solid ${Colors.primary}`,
     backgroundColor: Colors.menubgdark,    
   },  
   nestText: {
@@ -117,7 +119,7 @@ class SidebarMenuItem extends React.Component {
     super(props);
 
     this.state = {
-      
+      open: false
     };
   }
 
@@ -127,52 +129,82 @@ class SidebarMenuItem extends React.Component {
   };
 
   render() {
-    const { classes, parentIcon, parentText, items, id } = this.props;
+    const { classes, parentIcon, parentText, items, path, id } = this.props;
     const { nav } = ReduxStore.getState();
 
     const watchedMenu = nav.get('watchedMenu');
     const openParent = (watchedMenu === id);
+    const hasNoChild = items.length <= 0;
+
+    const SideBarListItem = () => (
+      <Fragment>
+        <ListItemIcon
+          children={parentIcon}
+          className={classNames(classes.parentIcon, {
+          [classes.parentIconActive]: openParent
+          })}
+        />
+        <ListItemText
+          inset 
+          primary={parentText}
+          className={classNames(classes.parentText, {
+          [classes.parentTextActive]: openParent
+          })}
+        />
+      </Fragment>
+    );
+
+    const MenuListItem = () => (
+      <ListItem
+        button
+        key={parentText}
+        to={path}
+        component={Link}
+        onClick={this.handleParentClick(id)} 
+        color="inherit" 
+        className={classNames(classes.parentItem, {
+          [classes.parentItemActive]: openParent
+        })}
+      >
+        <SideBarListItem />
+      </ListItem>
+    );
 
     return (
-      <Fragment>
-        <ListItem 
-          button
-          onClick={this.handleParentClick(id)} 
-          color="inherit" 
-          className={classNames(classes.parentItem, {
-            [classes.parentItemActive]: openParent
-          })}>
-          <ListItemIcon className={classNames(classes.parentIcon, {
-            [classes.parentIconActive]: openParent
-          })}>
-            {parentIcon}
-          </ListItemIcon>
-          <ListItemText inset className={classNames(classes.parentText, {
-            [classes.parentTextActive]: openParent
-          })}>
-            {parentText}
-          </ListItemText>
+      hasNoChild 
+      ? <MenuListItem />
+      : (
+        <Fragment>
+          <ListItem
+            button
+            onClick={this.handleParentClick(id)} 
+            color="inherit" 
+            className={classNames(classes.parentItem, {
+              [classes.parentItemActive]: openParent
+            })}
+          >
+          <SideBarListItem />
           {openParent ? <ExpandMore className={classes.iconActive} /> : <ChevronRight className={classes.icon} />}
-        </ListItem>
-        <Collapse in={openParent} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            {items.map(item => (
-              (item.level === 1 )
-              ? <ListItem 
-                  button
-                  key={item.text}
-                  to={item.path}
-                  component={Link}
-                  className={classNames(classes.nested,{
-                  [classes.nestedActive]: this.props.location.pathname.includes(item.path)
-                })}>
-                <ListItemText className={classes.nestText} secondary={item.text} />
-              </ListItem>
-              : null
-            ))}
-          </List>
-        </Collapse>
-      </Fragment>
+          </ListItem>
+          <Collapse in={openParent} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {items.map(item => (
+                <ListItem
+                    button
+                    key={item.text}
+                    to={item.path}
+                    component={Link}
+                    className={classNames(classes.nested,{
+                    [classes.nestedActive]: this.props.location.pathname.includes(item.path)
+                  })}>
+                  <ListItemText className={classes.nestText} secondary={item.text} />
+                </ListItem>
+
+              ))}
+            </List>
+          </Collapse>
+        </Fragment>
+      )
     );
   }
 }

@@ -6,16 +6,42 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import AllInboxIcon from "@material-ui/icons/AllInbox";
 import HomeContainer from "../screens/HomeScreen";
 import ErrorPageContainer from "../screens/ErrorPageScreen";
+import ElementContainer from "../screens/ElementScreen";
 
 const routerConfig = [
   {
     id: 'defaultPage',
     icon: <AssginmentIndIcon />,
-    title: '儀表板',
+    title: '主目录',
     displayMenu: true,
     funName: 'SystemFunction',
     component: HomeContainer,
     path: '/'
+  },
+  {
+    id: 'elements',
+    icon: <AllInboxIcon />,
+    title: '元件目录',
+    displayMenu: true,
+    funName: 'SystemFunction',
+    component: ElementContainer,
+    path: '/elements'
+  },
+  {
+    id: 'sysSettings',
+    displayMenu: true,
+    title: '系统设置',
+    icon: <SettingsIcon />,
+    funName: 'settings',
+    children: [
+      {
+        text: '帐号列表',
+        funGroup: 'withChildPage',
+        funName: 'withChildPage',
+        component: ElementContainer,
+        path: '/elements'
+      },
+    ]
   },
   {
     id: 'SysPage',
@@ -24,7 +50,6 @@ const routerConfig = [
     children: [
       {
         text: '错误页面404',
-        level: 0,
         funGroup: 'SystemFunction',
         funName: 'SystemFunction',
         component: ErrorPageContainer,

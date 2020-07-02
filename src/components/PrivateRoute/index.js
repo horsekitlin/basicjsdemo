@@ -9,9 +9,8 @@ const LOGOUT_TIME = 30 * 60 * 1000
 
 export default ({ component: Component, ...rest }) => {
   const { auth } = ReduxStore.getState();
-
+  
   const [initTokenRefreshed, setInitTokenRefreshed] = useState(false);
-
 
   let logoutTimeout;
 
@@ -25,9 +24,9 @@ export default ({ component: Component, ...rest }) => {
   }
 
   useEffect(() => {
-    if (initTokenRefreshed) return
+    if (initTokenRefreshed) return;
     setInitTokenRefreshed(true);
-  }, [auth, initTokenRefreshed]);
+  }, [auth]);
 
 
   // Idle timeout
