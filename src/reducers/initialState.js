@@ -15,7 +15,32 @@ export const authState = fromJS({
     employeeName: 'administrator',
     roleName: 'admin',
   },
-  permissions: [],
+  permissions: {
+    'elements': {
+      'read': true,
+      'add': true,
+      'update': true,
+      'delete': true,
+    },
+    'settings': {
+      'read': true,
+      'add': false,
+      'update': false,
+      'delete': false,
+    },
+    'accounts': {
+      'read': true,
+      'add': false,
+      'update': false,
+      'delete': false,
+    },
+    'roles': {
+      'read': true,
+      'add': false,
+      'update': false,
+      'delete': false,
+    },
+  },
   isInitial: false,
   loginErrorMsg: ''
 });

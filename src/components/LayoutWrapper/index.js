@@ -23,6 +23,7 @@ const mapStateToProps = ({ auth,nav, snackbar }) => ({
   open: snackbar.get('open'),
   message: snackbar.get('message'),
   level: snackbar.get('level'),
+  permissions: auth.get('permissions'),
 });
 
 const mapDispatchToProps = (dispatch) => ({

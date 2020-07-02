@@ -73,6 +73,16 @@ const MainScreen = (props) => {
                  path='/elements'
                 component={ElementScreen}
               />
+              <PrivateRoute
+                exact
+                 path='/system/accounts'
+                component={ElementScreen}
+              />
+              <PrivateRoute
+                exact
+                 path='/system/roles'
+                component={ElementScreen}
+              />
               <Route exact component={ErrorPage} />
             </Switch>
           </LayoutWrapper>

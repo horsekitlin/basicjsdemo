@@ -129,7 +129,7 @@ class SidebarMenuItem extends React.Component {
   };
 
   render() {
-    const { classes, parentIcon, parentText, items, path, id } = this.props;
+    const { classes, parentIcon, parentText, items, path, id, permissions } = this.props;
     const { nav } = ReduxStore.getState();
 
     const watchedMenu = nav.get('watchedMenu');
@@ -188,19 +188,22 @@ class SidebarMenuItem extends React.Component {
           </ListItem>
           <Collapse in={openParent} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              {items.map(item => (
-                <ListItem
+              {items.map(item => {
+              console.log("SidebarMenuItem -> render -> item", item)
+                const hasPermission = permissions.getIn([item.permissionId, item.permissionType]);
+                console.log("SidebarMenuItem -> render -> hasPermission", hasPermission)
+                if (!hasPermission) return <Fragment />;
+                return (
+                  <ListItem
                     button
                     key={item.text}
                     to={item.path}
                     component={Link}
-                    className={classNames(classes.nested,{
-                    [classes.nestedActive]: this.props.location.pathname.includes(item.path)
-                  })}>
-                  <ListItemText className={classes.nestText} secondary={item.text} />
-                </ListItem>
-
-              ))}
+                    className={classNames(classes.nested, {[classes.nestedActive]: this.props.location.pathname.includes(item.path)})}
+                  >
+                    <ListItemText className={classes.nestText} secondary={item.text} />
+                  </ListItem>
+                )})}
             </List>
           </Collapse>
         </Fragment>

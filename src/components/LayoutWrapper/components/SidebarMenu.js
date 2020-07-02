@@ -17,6 +17,8 @@ class SidebarMenu extends React.Component {
   };
 
   render() {
+    const { permissions } = this.props;
+
     return (
       <List>
         {routerConfig.map(menuItem => {
@@ -26,24 +28,27 @@ class SidebarMenu extends React.Component {
             hide,
             title,
             path,
-            displayMenu,
+            permissionId,
+            permissionType,
             children=[],
           } = menuItem;
-          
-          if(hide) return <Fragment />
+
+          const hasPermission = permissions.getIn([permissionId, permissionType]) || permissionId === 'default';
+
+        if(!hasPermission || hide) return <Fragment />
 
         return (
-         displayMenu
-         ? <SidebarMenuItem
+          <SidebarMenuItem
             key={id}
             id={id}
             path={path}
             items={children}
             parentIcon={icon}
             parentText={title}
-            {...this.props} />
-          : null
-          )})}
+            permissions={permissions}
+            {...this.props}
+          />)
+        })}
       </List>
     );
   }

@@ -1,5 +1,6 @@
 import React from "react";
 import AssginmentIndIcon from "@material-ui/icons/AssignmentInd";
+import DashboardIcon from '@material-ui/icons/Dashboard';
 import EditIcon from "@material-ui/icons/Edit";
 import TuneIcon from "@material-ui/icons/Tune";
 import SettingsIcon from "@material-ui/icons/Settings";
@@ -11,47 +12,54 @@ import ElementContainer from "../screens/ElementScreen";
 const routerConfig = [
   {
     id: 'defaultPage',
-    icon: <AssginmentIndIcon />,
+    permissionId: 'default',
+    permissionType: 'read',
+    icon: <DashboardIcon />,
     title: '主目录',
-    displayMenu: true,
-    funName: 'SystemFunction',
     component: HomeContainer,
     path: '/'
   },
   {
     id: 'elements',
+    permissionId: 'elements',
+    permissionType: 'read',
     icon: <AllInboxIcon />,
     title: '元件目录',
-    displayMenu: true,
-    funName: 'SystemFunction',
     component: ElementContainer,
     path: '/elements'
   },
   {
-    id: 'sysSettings',
-    displayMenu: true,
-    title: '系统设置',
+    id: 'settings',
+    permissionId: 'settings',
+    permissionType: 'read',
     icon: <SettingsIcon />,
-    funName: 'settings',
+    title: '系统设置',
     children: [
       {
+        permissionId: 'accounts',
+        permissionType: 'read',
         text: '帐号列表',
-        funGroup: 'withChildPage',
-        funName: 'withChildPage',
         component: ElementContainer,
-        path: '/elements'
+        path: '/system/accounts'
+      },
+      {
+        permissionId: 'roles',
+        permissionType: 'read',
+        text: '角色列表',
+        component: ElementContainer,
+        path: '/system/roles'
       },
     ]
   },
   {
     id: 'SysPage',
-    displayMenu: false,
-    funName: 'SystemFunction',
+    permissionId: 'default',
+    permissionType: 'read',
+    hide: true,
     children: [
       {
         text: '错误页面404',
         funGroup: 'SystemFunction',
-        funName: 'SystemFunction',
         component: ErrorPageContainer,
         path: '*'
       }
