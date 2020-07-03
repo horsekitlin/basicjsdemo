@@ -12,17 +12,10 @@ import {
   TableCell,
   Typography,
   TableContainer,
-  TablePagination,
 } from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
 import Selector from '../Selector';
-
-const Header = styled.div`
-  font-size: 24px;
-  color: balck;
-  font-weight: 900;
-  width: 20%;
-`;
+import HeaderBar from '../HeaderBar';
 
 const StyledHeader = styled(TableCell)`
   padding-left: 0;
@@ -58,10 +51,7 @@ const Table = ({
 
   return (
     <Fragment>
-      <Box mb={2} display='flex' flexDirection='row' justifyContent='space-between' alignItems='center'>
-        <Header>{title}</Header>
-        {rightTitle}
-      </Box>
+      <HeaderBar title={title} rightTitle={rightTitle} />
       <Box mb={2}>
         <Divider variant="fullWidth" />
       </Box>
