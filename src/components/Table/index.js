@@ -94,8 +94,8 @@ Table.propTypes = {
 
 Table.defaultPrsops = {
   totalCount: 0,
-  handleChangePage: ()=>console.log('handleChangePage'),
-  handleChangeRowsPerPage: ()=>console.log('handleChangeRowsPerPage'),
+  handleChangePage: ()=>{},
+  handleChangeRowsPerPage: ()=>{},
 };
 
 
