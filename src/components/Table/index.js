@@ -1,94 +1,109 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import Box from '@material-ui/core/Box';
-import Paper from '@material-ui/core/Paper';
-import TableRow from '@material-ui/core/TableRow';
-import TableHead from '@material-ui/core/TableHead';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
+import {
+  Table as BasicTable,
+  Paper,
+  Box,
+  Divider,
+  TableHead,
+  TableRow,
+  TableBody,
+  TableCell,
+  Typography,
+  TableContainer,
+  TablePagination,
+} from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
-import Typography from '@material-ui/core/Typography';
-import { Table as BasicTable } from '@material-ui/core';
-import TableContainer from '@material-ui/core/TableContainer';
-import TablePagination from '@material-ui/core/TablePagination';
-import Button from '../Buttons';
+import Selector from '../Selector';
 
 const Header = styled.div`
-  font-size: 16px;
+  font-size: 24px;
   color: balck;
   font-weight: 900;
   width: 20%;
 `;
 
-const datas = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)' },
-  { id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
-  { id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
-  { id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
-  { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
+const StyledHeader = styled(TableCell)`
+  padding-left: 0;
+  border-bottom: 2px solid black;
+  background: white;
+`;
+
+const StyledPageSelector = styled(Selector)`
+  text-align: left;
+  padding-left: 5px;
+  margin-left: 10px;
+  border: 1px solid grey;
+  border-radius: 8px;
+  &::before {
+    border: 0;
+  }
+`;
+
+const pageSelector = [
+  { text: '5/page', value: 5 },
+  { text: '10/page', value: 10 }
 ];
 
 const Table = ({
+  title,
+  rightTitle,
+  headers,
+  children,
+  totalCount,
   handleChangePage,
   handleChangeRowsPerPage,
 }) => {
-  const headers = Object.keys(datas[0]);
 
   return (
-    <Paper>
-      <Box p={1} display='flex' flexDirection='row' justifyContent='space-between' alignItems='center'>
-        <Header>Table Title</Header>
-        <Button> Export Action </Button>
+    <Fragment>
+      <Box mb={2} display='flex' flexDirection='row' justifyContent='space-between' alignItems='center'>
+        <Header>{title}</Header>
+        {rightTitle}
       </Box>
-      <TableContainer component={Paper}>
-        <BasicTable stickyHeader >
-          <TableHead >
-            <TableRow>
-                {headers.map(title=> 
-                  <TableCell>{title}</TableCell>
-                )}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {datas.map(row=> (
+      <Box mb={2}>
+        <Divider variant="fullWidth" />
+      </Box>
+      <TableContainer component={Paper} >
+        <Box m={2} fontSize={16} fontWeight={900} >
+          <Box mb={2} >{title}</Box>
+          <BasicTable>
+            <TableHead>
               <TableRow>
-                <TableCell>{row.id}</TableCell>
-                <TableCell>{(row.numeric)? 'Y': 'N'}</TableCell>
-                <TableCell>{(row.disablePadding)? 'Y': 'N'}</TableCell>
-                <TableCell>{row.label}</TableCell>
+                  {headers.map(title=> 
+                    <StyledHeader>{title}</StyledHeader>
+                  )}
               </TableRow>
-            ))}
-          </TableBody>
-        </BasicTable>
-        <Box display='flex' flexDirection='row' justifyContent='flex-end' alignItems='center'>
-          <Pagination count={10} page={1} onChange={handleChangePage} />
-          <Typography variant='h7'>
-            共 {datas.length} 笔
-          </Typography>
+            </TableHead>
+            <TableBody>{children}</TableBody>
+          </BasicTable>
         </Box>
-        <TablePagination 
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={datas.length}
-          rowsPerPage={5}
-          page={0}
-          labelRowsPerPage='rows per page'
-          labelDisplayedRows={({ from, to, count }) => `${from}-${to} of ${count}` }
-          onChangePage={handleChangePage}
-          onChangeRowsPerPage={handleChangeRowsPerPage}
+        <Box m={2} display='flex' flexDirection='row' justifyContent='flex-end' alignItems='center'>
+          <Pagination count={10} page={1} shape="rounded" onChange={handleChangePage} />
+          <Typography fontSize='h6.fontSize' textAlign='right'>
+            共 {totalCount} 笔
+          </Typography>
+          <StyledPageSelector
+            variant='standard'
+            defaultValue={5}
+            datas={pageSelector}
+            onChange={handleChangeRowsPerPage}
           />
+        </Box>
       </TableContainer>
-    </Paper>
+    </Fragment>
   );
 };
 
 
 Table.propTypes = {
   page: propTypes.number,
+  totalCount: propTypes.number,
 };
 
 Table.defaultPrsops = {
+  totalCount: 0,
   handleChangePage: ()=>console.log('handleChangePage'),
   handleChangeRowsPerPage: ()=>console.log('handleChangeRowsPerPage'),
 };

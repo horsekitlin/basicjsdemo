@@ -3,12 +3,12 @@ import propTypes from 'prop-types';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const datas = [
+const defaultData = [
   { text: 'Option 1', value: 1},
   { text: 'Option 2', value: 2}
 ];
 
-const Selector = (props) => {
+const Selector = ({ datas, ...props}) => {
   return (
     <Select {...props} >
     {datas.map(data => (
@@ -24,6 +24,7 @@ Selector.propTypes = {
 };
 
 Selector.defaultPrsops = {
+  datas: defaultData,
   onChange: () => {},
 };
 

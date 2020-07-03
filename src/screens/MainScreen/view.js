@@ -8,6 +8,8 @@ import ErrorPage from '../ErrorPageScreen';
 import HomeScreen from '../HomeScreen';
 import ElementScreen from "../ElementScreen";
 import LoginScreen from '../LoginScreen';
+import AccountScreen from '../AccountScreen';
+import RoleScreen from '../RoleScreen';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import { AppColors } from '../../constants/colors.config';
 // import reduxStore from '../../store/configureStore';
@@ -75,13 +77,13 @@ const MainScreen = (props) => {
               />
               <PrivateRoute
                 exact
-                 path='/system/accounts'
-                component={ElementScreen}
+                 path='/system/account'
+                component={AccountScreen}
               />
               <PrivateRoute
                 exact
-                 path='/system/roles'
-                component={ElementScreen}
+                 path='/system/role'
+                component={RoleScreen}
               />
               <Route exact component={ErrorPage} />
             </Switch>

@@ -40,14 +40,14 @@ const routerConfig = [
         permissionType: 'read',
         text: '帐号列表',
         component: ElementContainer,
-        path: '/system/accounts'
+        path: '/system/account'
       },
       {
         permissionId: 'roles',
         permissionType: 'read',
         text: '角色列表',
         component: ElementContainer,
-        path: '/system/roles'
+        path: '/system/role'
       },
     ]
   },
