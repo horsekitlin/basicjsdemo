@@ -66,7 +66,7 @@ const style = theme => ({
   }
 });
 
-const AlertDialogWrapper = ({
+const DialogWrapper = ({
   classes,
   children,
   onConfirm,
@@ -112,4 +112,4 @@ const AlertDialogWrapper = ({
   );
 };
 
-export default withStyles(style)(AlertDialogWrapper);
+export default withStyles(style)(DialogWrapper);
