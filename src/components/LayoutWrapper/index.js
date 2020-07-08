@@ -22,7 +22,6 @@ const mapStateToProps = ({ auth,nav, snackbar }) => ({
   roleName: auth.getIn(['info','roleName']),
   open: snackbar.get('open'),
   message: snackbar.get('message'),
-  level: snackbar.get('level'),
   permissions: auth.get('permissions'),
 });
 
