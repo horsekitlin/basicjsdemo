@@ -1,41 +1,32 @@
 import { fromJS } from 'immutable';
-import { createBrowserHistory } from 'history';
-
-const history = createBrowserHistory();
-
-export const userState = fromJS({
-  login: {
-    ok: true
-  }
-});
 
 export const authState = fromJS({
-  isAuth: true,
+  isAuth: false,
   info: {
-    employeeName: 'administrator',
-    roleName: 'admin',
+    employeeName: '',
+    roleName: '',
   },
   permissions: {
     elements: {
-      read: true,
-      add: true,
-      update: true,
-      delete: true,
+      read: false,
+      add: false,
+      update: false,
+      delete: false,
     },
     settings: {
-      read: true,
+      read: false,
       add: false,
       update: false,
       delete: false,
     },
     accounts: {
-      read: true,
+      read: false,
       add: false,
       update: false,
       delete: false,
     },
     roles: {
-      read: true,
+      read: false,
       add: false,
       update: false,
       delete: false,
@@ -63,7 +54,3 @@ export const navState = fromJS({
   watchedMenu: '',
   alertType: ''
 });
-
-export const routeState = {
-  history
-};

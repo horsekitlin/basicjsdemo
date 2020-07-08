@@ -13,6 +13,36 @@ export function* loginSaga() {
     yield put({
       type: types.LOGIN_SUCCESS,
       payload: {
+        info: {
+          employeeName: 'administrator',
+          roleName: 'admin',
+        },
+        permissions: {
+          elements: {
+            read: true,
+            add: true,
+            update: true,
+            delete: true,
+          },
+          settings: {
+            read: true,
+            add: false,
+            update: false,
+            delete: false,
+          },
+          accounts: {
+            read: true,
+            add: false,
+            update: false,
+            delete: false,
+          },
+          roles: {
+            read: true,
+            add: false,
+            update: false,
+            delete: false,
+          },
+        },
         ok: true
       }
     });
@@ -38,7 +68,7 @@ const errLogout = () => ({
 export function* logoutSaga({ payload }) {
   try {
     yield put(okLogout(
-      {ok: false}
+      { ok: false }
     ));
   } catch (error) {
     yield put(errLogout());

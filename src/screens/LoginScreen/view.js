@@ -62,7 +62,7 @@ class LoginScreen extends React.PureComponent {
         password: this.state.password
       };
 
-      this.props.login(payload);
+      this.props.handleLogin(payload);
     }
     this.setState(state => ({ ...state, ...newState }));
   };
