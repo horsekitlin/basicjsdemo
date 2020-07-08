@@ -7,7 +7,7 @@ const mockLogin = () => new Promise(resolve =>
   }, 1000)
 );
 
-export function* loginSaga({ payload }) {
+export function* loginSaga() {
   try {
     yield call(mockLogin);
     yield put({
