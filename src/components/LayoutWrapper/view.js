@@ -223,7 +223,7 @@ class LayoutWrapper extends React.PureComponent {
     const {
       classes,
       theme,
-      auth,
+      isAuth,
       watchedMenu,
       isSideBarOpened,
       isAlertDialogOpen,
@@ -236,6 +236,15 @@ class LayoutWrapper extends React.PureComponent {
       ...others
     } = this.props;
 
+    if (!isAuth) {
+      return (
+        <ErrorBoundary>
+          <div className={classes.root}>
+            {this.props.children}
+          </div>
+        </ErrorBoundary>
+      );
+    }
     return (
       <ErrorBoundary>
         <div className={classes.root}>

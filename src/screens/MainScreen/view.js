@@ -67,7 +67,7 @@ const MainScreen = (props) => {
         <Router>
           <LayoutWrapper>
             <Switch>
-              <PublicRoute exact path='/login' component={LoginScreen} />
+              <PublicRoute exact isAuth={isAuth} path='/login' component={LoginScreen} />
               <PrivateRoute
                 exact
                 path='/'

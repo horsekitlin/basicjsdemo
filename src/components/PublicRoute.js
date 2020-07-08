@@ -1,13 +1,16 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
-export default ({ component: Component, ...rest }) => {
+export default ({ component: Component, isAuth, ...rest }) => {
 
   return (
     <Route
       {...rest}
       render={props => {
-        return <Component {...props} />;
+        if (isAuth) {
+          return <Redirect to={{ pathname: '/' }} />;
+        }
+        return <Component {...props} isAuth={isAuth} />;
       }}
     />
   );

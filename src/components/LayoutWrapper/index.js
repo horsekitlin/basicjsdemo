@@ -12,6 +12,7 @@ import {
 } from '../../actions/navActions';
 
 const mapStateToProps = ({ auth,nav, snackbar }) => ({
+  isAuth: auth.get('isAuth'),
   token: auth.getIn(['info','token']),
   alertType: nav.get('alertType'),
   isSideBarOpened: nav.get('isSideBarOpened'),

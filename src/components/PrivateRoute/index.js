@@ -8,7 +8,7 @@ export default ({ component: Component, isAuth, ...rest }) => {
       render={props => {
         if (!isAuth) {
           return <Redirect to={{ pathname: '/login' }} />;
-        }          
+        }
         return <Component {...props} isAuth={isAuth} />
       }}
     />
