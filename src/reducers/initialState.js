@@ -1,7 +1,8 @@
 import { fromJS } from 'immutable';
+import { getLoginUser } from '../store/localStorage';
+import isEmpty from 'lodash/isEmpty';
 
-export const authState = fromJS({
-  isAuth: false,
+const DEFAULT_USER = {
   info: {
     employeeName: '',
     roleName: '',
@@ -32,8 +33,19 @@ export const authState = fromJS({
       delete: false,
     },
   },
+};
+
+const user = getLoginUser();
+const isAuth = !isEmpty(user);
+const userData = isEmpty(user)
+  ? DEFAULT_USER
+  : user;
+
+export const authState = fromJS({
+  isAuth,
   isInitial: false,
-  loginErrorMsg: ''
+  loginErrorMsg: '',
+  ...userData,
 });
 
 export const settingState = fromJS({
