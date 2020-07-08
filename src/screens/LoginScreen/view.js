@@ -15,7 +15,7 @@ const styles = theme => ({
     fontSize: 16
   }
 });
-class LoginScreen extends React.Component {
+class LoginScreen extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {

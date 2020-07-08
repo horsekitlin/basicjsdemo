@@ -2,7 +2,9 @@ import constants from 'flux-constants';
 
 const syncActionTypes = [
   'LOGOUT',
-  'HANDLE_SIDEBAR'
+  'START_FETCHING',
+  'STOP_FETCHING',
+  'HANDLE_SIDEBAR',
 ];
 
 const layoutActionTypes = [

@@ -1,7 +1,7 @@
 import LayoutWrapper from './view';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { refreshTokenAction } from '../../actions/authActions';
+import { logoutAction, refreshTokenAction } from '../../actions/authActions';
 import {
   switchSideBarAction,
   switchMenuAction,
@@ -27,6 +27,9 @@ const mapStateToProps = ({ auth,nav, snackbar }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  handleLogout: payload => {
+    dispatch(logoutAction(payload));
+  },
   handleRefreshToken: () => {
     dispatch(refreshTokenAction());
   },

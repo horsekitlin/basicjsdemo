@@ -197,7 +197,7 @@ class LayoutWrapper extends React.Component {
       customHeaders: { Authorization: token }
     };
 
-    this.props.logout(payload);
+    this.props.handleLogout(payload);
   }
 
   handleSnackBarClose = () => {
