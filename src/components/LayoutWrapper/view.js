@@ -152,19 +152,10 @@ const styles = theme => ({
   }
 });
 
-class LayoutWrapper extends React.Component {
-  
-  constructor(props) {
-    super(props);
-    this.state = {
-      
-    };
-  }
-  
+class LayoutWrapper extends React.PureComponent {
   componentDidMount = () => {
     this.checkWatchMenuOpened();
     this.props.hideAlertDialog();
-
   }
 
   showAlertDialog = type => () => {
@@ -173,7 +164,7 @@ class LayoutWrapper extends React.Component {
       alertType: type,
       level: 'info',
     });
-  } 
+  }
 
   handleDrawerOpen = () => {
     this.props.sideBarSwitch(true);
@@ -181,8 +172,9 @@ class LayoutWrapper extends React.Component {
   };
 
   checkWatchMenuOpened = () => {
-    const pathId = this.props.location.pathname.split('/')[1]
-    if(pathId !== undefined)  this.props.setWatchMenu(pathId);
+    const { location, setWatchMenu } = this.props;
+    const pathId = location.pathname.split('/')[1]
+    if (pathId !== undefined) setWatchMenu(pathId);
   }
 
   handleDrawerClose = () => {
@@ -210,7 +202,7 @@ class LayoutWrapper extends React.Component {
 
   handleAlertConfirm = () => {
     const { alertType } = this.props;
-    
+
     switch (alertType) {
       case 'LOGOUT':
       case 'PERMISSION_EXPIRED':
@@ -296,7 +288,7 @@ class LayoutWrapper extends React.Component {
                   [classes.drawerOpen]: isSideBarOpened
                 })}
                 classes={{
-                  paper: classNames(classes.drawer,{
+                  paper: classNames(classes.drawer, {
                     [classes.drawerOpen]: isSideBarOpened
                   }),
                 }}
@@ -308,35 +300,35 @@ class LayoutWrapper extends React.Component {
                     {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                   </IconButton>
                 </div>
-                <Divider className={classes.divider}/>
-                <SidebarMenu watchedMenu={watchedMenu} {...others}/>
+                <Divider className={classes.divider} />
+                <SidebarMenu watchedMenu={watchedMenu} {...others} />
               </Drawer>
             </Hidden>
             <Hidden xsDown>
               <Drawer
-                  variant='permanent'
-                  className={classNames(classes.drawer, {
+                variant='permanent'
+                className={classNames(classes.drawer, {
+                  [classes.drawerOpen]: isSideBarOpened
+                })}
+                classes={{
+                  paper: classNames(classes.drawer, {
                     [classes.drawerOpen]: isSideBarOpened
-                  })}
-                  classes={{
-                    paper: classNames(classes.drawer,{
-                      [classes.drawerOpen]: isSideBarOpened
-                    }),
-                  }}
-                  open={true}>
-                  <div className={classes.toolbar}>
-                    {/* <img className={classes.infoLogo} src={Logo} alt='LOGO'/> */}
-                  </div>
-                  <Divider className={classes.divider}/>
-                  <SidebarMenu watchedMenu={watchedMenu} {...others} />
-                </Drawer>
-             </Hidden>
+                  }),
+                }}
+                open={true}>
+                <div className={classes.toolbar}>
+                  {/* <img className={classes.infoLogo} src={Logo} alt='LOGO'/> */}
+                </div>
+                <Divider className={classes.divider} />
+                <SidebarMenu watchedMenu={watchedMenu} {...others} />
+              </Drawer>
+            </Hidden>
           </MuiThemeProvider>
           <main className={classNames(classes.content, {
             [classes.contentShift]: isSideBarOpened,
           })}>
             <div className={classes.toolbar} />
-           {this.props.children}
+            {this.props.children}
           </main>
         </div>
       </ErrorBoundary>
