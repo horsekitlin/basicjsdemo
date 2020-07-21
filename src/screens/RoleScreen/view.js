@@ -5,7 +5,7 @@ import {
 } from '@material-ui/core';
 import Table from '../../components/Table';
 import TableCell from '../../components/TableCell';
-import Button from '../../components/Buttons';
+import { Button } from '../../components/Buttons';
 
 const RoleScreen = (props) => {
   const [page, setPage] = useState(0);
@@ -21,18 +21,18 @@ const RoleScreen = (props) => {
 
   const headers = ['角色名称', '说明', '操作'];
   const datas = [
-    { name: 'administrator', desc:'admin', opt:'edit'},
-    { name: 'manager', desc:'management', opt: 'edit'}
+    { name: 'administrator', desc: 'admin', opt: 'edit' },
+    { name: 'manager', desc: 'management', opt: 'edit' }
   ];
-  
-  return(
+
+  return (
     <Box m={3} display='flex' flexDirection='column'>
       <Table
         title='RoleScreen'
         rightTitle={<Button> Export Action </Button>}
         headers={headers}
         children={
-          datas.map((row, index)=> (
+          datas.map((row, index) => (
             <TableRow key={`${row.name}-${index}`}>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.desc}</TableCell>

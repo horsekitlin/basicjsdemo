@@ -1,27 +1,27 @@
 import React from 'react';
-import DialogWrapper from '../../DialogWrapper';
+import AlertDialogWrapper from '../../components/DialogWrapper';
 
 const AlertDialog = ({
   title,
   watchData,
   mode,
-  level,
+  type,
   onConfirm,
   onCancel,
   onChangeHandler,
   ...props
 }) => (
-  <DialogWrapper
+  <AlertDialogWrapper
     {...props}
     maxWidth='md'
     onConfirm={onConfirm}
     onCancel={onCancel}
-    level={level}
+    type={type}
     cancelText='取消'
     confirmText='确认'
   >
     {title}
-  </DialogWrapper>
+  </AlertDialogWrapper>
 );
 
 export default AlertDialog;

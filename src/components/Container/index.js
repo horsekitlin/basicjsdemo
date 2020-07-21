@@ -1,13 +1,7 @@
-import React from 'react';
+import styled from 'styled-components';
 
-class Container extends React.PureComponent {
-  render(){
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    )
-  }
-}
+const Container = styled.div`
+  padding: 15px
+`
 
 export default Container;

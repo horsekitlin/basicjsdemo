@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import VpnKeyIcon from "@material-ui/icons/VpnKey";
-import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
-import { IconButton, Menu, MenuItem } from "@material-ui/core";
+import React, { Fragment } from 'react';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import { IconButton, Menu, MenuItem } from '@material-ui/core';
 
 class ProfileMenu extends React.Component {
   constructor(props) {
@@ -43,8 +43,8 @@ class ProfileMenu extends React.Component {
     const renderMenu = (
       <Menu
         anchorEl={anchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
@@ -62,13 +62,13 @@ class ProfileMenu extends React.Component {
     const renderMobileMenu = (
       <Menu
         anchorEl={mobileMoreAnchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMobileMenuOpen}
         onClose={this.handleMobileMenuClose}
       >
         <MenuItem onClick={this.handleProfileMenuOpen}>
-          <IconButton color="inherit">
+          <IconButton color='inherit'>
             <AccountCircle />
           </IconButton>
           <p>Profile</p>
@@ -79,10 +79,10 @@ class ProfileMenu extends React.Component {
     return (
       <Fragment>
         <IconButton
-          aria-owns={isMenuOpen ? "material-appbar" : undefined}
-          aria-haspopup="true"
+          aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+          aria-haspopup='true'
           onClick={this.handleProfileMenuOpen}
-          color="inherit"
+          color='inherit'
         >
           <AccountCircle />
         </IconButton>

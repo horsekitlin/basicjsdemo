@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 import PrivateRoute from '../../components/PrivateRoute';
 import PublicRoute from '../../components/PublicRoute';
 import ErrorPage from '../ErrorPageScreen';
@@ -14,7 +14,7 @@ import LayoutWrapper from '../../components/LayoutWrapper';
 import theme from '../../constants/theme';
 
 const MainScreen = (props) => {
-  const { isAuth } = props;
+  const { isAuth, nav, auth, snackbar } = props;
   const [, setInitApp] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const MainScreen = (props) => {
       {/* ErrorBoundary had already in LayoutWrapper, not sure whether should put again or not? */}
       <ErrorBoundary>
         <Router>
-          <LayoutWrapper>
+          <LayoutWrapper nav={nav} auth={auth} snackbar={snackbar}>
             <Switch>
               <PublicRoute exact isAuth={isAuth} path='/login' component={LoginScreen} />
               <PrivateRoute

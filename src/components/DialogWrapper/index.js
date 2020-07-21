@@ -7,7 +7,7 @@ import WarningIcon from "@material-ui/icons/Warning";
 import ErrorIcon from "@material-ui/icons/Error";
 import InfoIcon from "@material-ui/icons/Info";
 import QuestionIcon from "@material-ui/icons/HelpOutline";
-import Button from "../Buttons";
+import { Button } from "../Buttons";
 import classNames from "classnames";
 
 const variantIcon = {
@@ -57,7 +57,7 @@ const style = theme => ({
     textAlign: "center"
   },
   button: {
-    marginRight:  theme.spacing(1.5)
+    marginRight: theme.spacing(1.5)
   },
   dialogFooter: {
     textAlign: "center",
@@ -77,11 +77,11 @@ const DialogWrapper = ({
   open = false,
   confirmButtonProps = {},
   cancelButtonProps = {},
-  level = "info",
+  type = "info",
   fullScreen,
   ...props
 }) => {
-  const Icon = variantIcon[level];
+  const Icon = variantIcon[type];
   return (
     <Dialog
       fullScreen={fullScreen}
@@ -92,7 +92,7 @@ const DialogWrapper = ({
       {...props}
     >
       <DialogContent className={classes.dialogContent}>
-        <Icon className={classNames(classes[level], classes.icon)} />
+        <Icon className={classNames(classes[type], classes.icon)} />
         <div>{children}</div>
       </DialogContent>
       <div className={classes.dialogFooter}>

@@ -5,7 +5,7 @@ import {
 } from '@material-ui/core';
 import Table from '../../components/Table';
 import TableCell from '../../components/TableCell';
-import Button from '../../components/Buttons';
+import { Button } from '../../components/Buttons';
 
 
 const AccountScreen = (props) => {
@@ -22,18 +22,18 @@ const AccountScreen = (props) => {
 
   const headers = ['账号', '角色', '状态', '操作'];
   const datas = [
-    { name: 'administrator', role:'admin', status: 1, opt: ''},
-    { name: 'user01', role:'manager', status: 1, opt:'edit'},
+    { name: 'administrator', role: 'admin', status: 1, opt: '' },
+    { name: 'user01', role: 'manager', status: 1, opt: 'edit' },
   ];
-  
-  return(
+
+  return (
     <Box m={3} display='flex' flexDirection='column'>
       <Table
         title='AccountScreen'
         rightTitle={<Button> Export Action </Button>}
         headers={headers}
         children={
-          datas.map((row, index)=> (
+          datas.map((row, index) => (
             <TableRow key={`${row.name}-${index}`}>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.role}</TableCell>

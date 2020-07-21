@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, withStyles } from '@material-ui/core';
-import Button from '../Buttons';
+import { Button } from '../Buttons';
 
 const styles = theme => ({
   panelHeader: {
@@ -36,29 +36,29 @@ const styles = theme => ({
 const PanelHeaderWithButton = ({
   title = '',
   subTitle = '',
-  hideButton=false,
+  hideButton = false,
   classes,
   children,
   onClick,
   btnText,
   ...props
 }) => (
-  <div className={classes.panelHeader} {...props}>
-    <Typography variant='h5'>
-      {title}
-      <span className={classes.subTitle}>{subTitle}</span>
-    </Typography>
-    <div className={classes.buttonZone}>
-      <Button
-        hide={hideButton}
-        color='primary'
-        className={classes.button}
-        onClick={onClick}
-      >
-        {btnText}
-      </Button>
+    <div className={classes.panelHeader} {...props}>
+      <Typography variant='h5'>
+        {title}
+        <span className={classes.subTitle}>{subTitle}</span>
+      </Typography>
+      <div className={classes.buttonZone}>
+        <Button
+          hide={hideButton}
+          color='primary'
+          className={classes.button}
+          onClick={onClick}
+        >
+          {btnText}
+        </Button>
+      </div>
     </div>
-  </div>
-);
+  );
 
 export default withStyles(styles)(PanelHeaderWithButton)
