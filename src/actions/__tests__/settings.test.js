@@ -1,4 +1,4 @@
-import * as settingsActions from '../settings';
+import * as settingsActions from '../navActions';
 import types from '../../constants/actionTypes';
 
 const {describe, it, expect} = global;

@@ -86,7 +86,7 @@ class LoginScreen extends React.PureComponent {
           }}
         >
           <div>
-            
+
             <Typography
               variant="h6"
               style={{ color: "#c1c1c1", fontWeight: 200 }}
@@ -97,6 +97,9 @@ class LoginScreen extends React.PureComponent {
           <PanelBody>
             <div>
               <TextField
+                inputProps={{
+                  "data-testid": "account"
+                }}
                 error={this.state.accountErrorMsg !== ""}
                 style={{ width: "60%" }}
                 name="account"
@@ -112,6 +115,9 @@ class LoginScreen extends React.PureComponent {
             </div>
             <div>
               <TextField
+                inputProps={{
+                  "data-testid": "password"
+                }}
                 error={this.state.passwordErrorMsg !== ""}
                 style={{ width: "60%" }}
                 className={"textField"}
@@ -135,6 +141,7 @@ class LoginScreen extends React.PureComponent {
             </FormHelperText>
             <div style={{ marginTop: 20 }}>
               <Button
+                data-testid="submit"
                 type="submit"
                 variant="contained"
                 color="primary"

@@ -25,6 +25,6 @@ const localStorageMock = {
 
 global.localStorage = localStorageMock;
 
-console.error = message => {
-  throw new Error(message);
-};
+// console.error = message => {
+//   throw new Error(message);
+// };
