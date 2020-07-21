@@ -14,7 +14,7 @@ import LayoutWrapper from '../../components/LayoutWrapper';
 import theme from '../../constants/theme';
 
 const MainScreen = (props) => {
-  const { isAuth, nav, auth, snackbar, setWatchMenu, hideAlertDialog } = props;
+  const { isAuth, nav, auth, snackbar, setWatchMenu, showAlertDialog, hideAlertDialog, handleLogout } = props;
   const [, setInitApp] = useState(false);
 
   useEffect(() => {
@@ -31,7 +31,9 @@ const MainScreen = (props) => {
             auth={auth}
             snackbar={snackbar}
             setWatchMenu={setWatchMenu}
-            hideAlertDialog={hideAlertDialog}>
+            showAlertDialog={showAlertDialog}
+            hideAlertDialog={hideAlertDialog}
+            handleLogout={handleLogout}>
             <Switch>
               <PublicRoute exact isAuth={isAuth} path='/login' component={LoginScreen} />
               <PrivateRoute

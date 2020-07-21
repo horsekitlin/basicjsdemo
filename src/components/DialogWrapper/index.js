@@ -96,17 +96,14 @@ const DialogWrapper = ({
         <div>{children}</div>
       </DialogContent>
       <div className={classes.dialogFooter}>
-        <Button color='primary' className={classes.button} onClick={onConfirm}>
-          {confirmText}
-        </Button>
+        <Button color='primary' className={classes.button} onClick={onConfirm} text={confirmText} />
         <Button
           hide={mode !== "ask"}
           color='secondary'
           className={classes.button}
           onClick={onCancel}
-        >
-          {cancelText}
-        </Button>
+          text={cancelText}
+        />
       </div>
     </Dialog>
   );

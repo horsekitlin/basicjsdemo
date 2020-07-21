@@ -158,7 +158,6 @@ class LayoutWrapper extends React.Component {
   }
 
   componentDidMount = () => {
-    console.log(this.props.location)
     this.checkWatchMenuOpened();
     this.props.hideAlertDialog();
   }
@@ -194,7 +193,7 @@ class LayoutWrapper extends React.Component {
       customHeaders: { Authorization: token }
     };
 
-    this.props.logout(payload);
+    this.props.handleLogout(payload);
   }
 
   handleSnackBarClose = () => {
