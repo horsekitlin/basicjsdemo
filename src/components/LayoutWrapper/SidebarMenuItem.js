@@ -203,11 +203,11 @@ const MenuListItem = ({
       </ListItem>
       <Collapse in={openParent} timeout='auto' unmountOnExit>
         <List component='div' disablePadding>
-          {items.map(item =>
+          {items.map((item, index) =>
             item.isHided ? null : (
               <ListItem
                 button
-                key={`MenuItem${item.title}`}
+                key={`MenuItem-${index}`}
                 to={item.path}
                 component={Link}
                 className={classNames(classes.nested, {

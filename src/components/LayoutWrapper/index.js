@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -86,7 +88,7 @@ const styles = theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: 'hidden',
-    width: 0 ,    
+    width: 0,
   },
   title: {
     display: 'none',
@@ -112,7 +114,7 @@ const styles = theme => ({
     ...theme.mixins.toolbar,
   },
   content: {
-    flexGrow: 1,    
+    flexGrow: 1,
     paddingLeft: 0,
     backgroundColor: Colors.bodybg,
     transition: theme.transitions.create(['margin'], {
@@ -121,24 +123,24 @@ const styles = theme => ({
     }),
     [theme.breakpoints.up('sm')]: {
       marginLeft: drawerWidth
-    }, 
+    },
   },
   contentShift: {
-    marginLeft: 0,    
+    marginLeft: 0,
     transition: theme.transitions.create(['margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
     [theme.breakpoints.up('sm')]: {
       marginLeft: drawerWidth
-    }, 
+    },
   },
   divider: {
     borderBottom: `1px solid ${Colors.menubgdark}`,
-    height:0
+    height: 0
   },
   sideBar: {
-    borderRight:'1px solid #000'
+    borderRight: '1px solid #000'
   },
   infoLogo: {
     width: '172px',
@@ -151,11 +153,12 @@ class LayoutWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+
     };
   }
 
   componentDidMount = () => {
+    console.log(this.props.location)
     this.checkWatchMenuOpened();
     this.props.hideAlertDialog();
   }
@@ -166,7 +169,7 @@ class LayoutWrapper extends React.Component {
       alertType: type,
       type: 'info',
     });
-  } 
+  }
 
   handleDrawerOpen = () => {
     this.props.sideBarSwitch(true);
@@ -175,7 +178,7 @@ class LayoutWrapper extends React.Component {
 
   checkWatchMenuOpened = () => {
     const pathId = this.props.location.pathname.split('/')[1]
-    if(pathId !== undefined)  this.props.setWatchMenu(pathId);
+    if (pathId !== undefined) this.props.setWatchMenu(pathId);
   }
 
   handleDrawerClose = () => {
@@ -186,7 +189,7 @@ class LayoutWrapper extends React.Component {
   handleLogout = () => {
 
     const { auth } = this.props;
-    const token = auth.getIn(['info','token']);
+    const token = auth.getIn(['info', 'token']);
     const payload = {
       customHeaders: { Authorization: token }
     };
@@ -205,7 +208,7 @@ class LayoutWrapper extends React.Component {
   handleAlertConfirm = () => {
     const { nav } = this.props;
     const alertType = nav.get('alertType');
-    
+
     switch (alertType) {
       case 'LOGOUT':
       case 'PERMISSION_EXPIRED':
@@ -225,8 +228,8 @@ class LayoutWrapper extends React.Component {
   render() {
     const { classes, theme, auth, nav, snackbar, ...other } = this.props;
     const open = nav.get('isSideBarOpened');
-    const employeeName = auth.getIn(['info','employeeName']) || '';
-    const roleName = auth.getIn(['info','roleName']) || '';
+    const employeeName = auth.getIn(['info', 'employeeName']) || '';
+    const roleName = auth.getIn(['info', 'roleName']) || '';
 
     return (
       <ErrorBoundary>
@@ -238,7 +241,7 @@ class LayoutWrapper extends React.Component {
             onConfirm={this.handleAlertConfirm}
             onCancel={this.handleAlertCancel}
           />
-          <SnackBar open={snackbar.get('open')} message={snackbar.get('message')} type={snackbar.get('type')} onClose={this.handleSnackBarClose}/>
+          <SnackBar open={snackbar.get('open')} message={snackbar.get('message')} type={snackbar.get('type')} onClose={this.handleSnackBarClose} />
           <AppBar
             position='fixed'
             className={classNames(classes.appBar, {
@@ -255,7 +258,7 @@ class LayoutWrapper extends React.Component {
                 <MenuIcon />
               </IconButton>
               <Typography className={classes.title} variant='h5' color='inherit' noWrap>
-               管理平台
+                管理平台
               </Typography>
               <div className={classes.grow} />
               <div className={classes.sectionDesktop}>
@@ -276,7 +279,7 @@ class LayoutWrapper extends React.Component {
                   [classes.drawerOpen]: open
                 })}
                 classes={{
-                  paper: classNames(classes.drawer,{
+                  paper: classNames(classes.drawer, {
                     [classes.drawerOpen]: open
                   }),
                 }}
@@ -289,35 +292,35 @@ class LayoutWrapper extends React.Component {
                     {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                   </IconButton>
                 </div>
-                <Divider className={classes.divider}/>
-                <SidebarMenu nav={nav} {...other}/>
+                <Divider className={classes.divider} />
+                <SidebarMenu nav={nav} {...other} />
               </Drawer>
             </Hidden>
             <Hidden xsDown>
               <Drawer
-                  variant='permanent'
-                  className={classNames(classes.drawer, {
+                variant='permanent'
+                className={classNames(classes.drawer, {
+                  [classes.drawerOpen]: open
+                })}
+                classes={{
+                  paper: classNames(classes.drawer, {
                     [classes.drawerOpen]: open
-                  })}
-                  classes={{
-                    paper: classNames(classes.drawer,{
-                      [classes.drawerOpen]: open
-                    }),
-                  }}
-                  open={true}>
-                  <div className={classes.toolbar}>
-                    {/* <img className={classes.infoLogo} src={Logo} alt='LOGO'/> */}
-                  </div>
-                  <Divider className={classes.divider}/>
-                  <SidebarMenu nav={nav} { ...other }/>
-                </Drawer>
-             </Hidden>
+                  }),
+                }}
+                open={true}>
+                <div className={classes.toolbar}>
+                  {/* <img className={classes.infoLogo} src={Logo} alt='LOGO'/> */}
+                </div>
+                <Divider className={classes.divider} />
+                <SidebarMenu nav={nav} {...other} />
+              </Drawer>
+            </Hidden>
           </MuiThemeProvider>
           <main className={classNames(classes.content, {
             [classes.contentShift]: open,
           })}>
             <div className={classes.toolbar} />
-           {this.props.children}
+            {this.props.children}
           </main>
         </div>
       </ErrorBoundary>
@@ -325,4 +328,8 @@ class LayoutWrapper extends React.Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(LayoutWrapper);
+export default compose(
+  withStyles(styles, { withTheme: true }),
+  withRouter,
+)(LayoutWrapper);
+// withStyles(styles, { withTheme: true })(LayoutWrapper);

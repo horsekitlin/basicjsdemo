@@ -18,12 +18,12 @@ class SidebarMenu extends React.Component {
   render() {
     return (
       <List>
-        {routerConfig.map(menuItem => {
+        {routerConfig.map((menuItem, index) => {
           const { id, menuHided, children = [], icon, path, title } = menuItem;
           return menuHided ? null : (
             <SidebarMenuItem
               id={id}
-              key={id}
+              key={`${id}-${index}`}
               path={path}
               items={children}
               parentIcon={icon}

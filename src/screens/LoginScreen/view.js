@@ -1,13 +1,14 @@
 import React from "react";
 import {
   Grid,
-  Button,
   TextField,
   Typography,
   FormHelperText,
   withStyles
 } from "@material-ui/core";
 import { Panel, PanelBody } from "../../components/Panels";
+import packageJson from '../../../package.json';
+import { Button } from '../../components/Buttons';
 
 const styles = theme => ({
   errorMessage: {
@@ -147,12 +148,11 @@ class LoginScreen extends React.PureComponent {
                 color="primary"
                 size="large"
                 onClick={this.handleSubmit}
-              >
-                登录
-              </Button>
+                title='登录'
+              />
             </div>
             <div style={{ marginTop: 20 }}>
-              <Typography variant="subtitle1">VERSION</Typography>
+              <Typography variant="subtitle1">VERSION {packageJson.version}</Typography>
             </div>
           </PanelBody>
         </Panel>

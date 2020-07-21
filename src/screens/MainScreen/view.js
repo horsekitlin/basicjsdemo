@@ -14,7 +14,7 @@ import LayoutWrapper from '../../components/LayoutWrapper';
 import theme from '../../constants/theme';
 
 const MainScreen = (props) => {
-  const { isAuth, nav, auth, snackbar } = props;
+  const { isAuth, nav, auth, snackbar, setWatchMenu, hideAlertDialog } = props;
   const [, setInitApp] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,12 @@ const MainScreen = (props) => {
       {/* ErrorBoundary had already in LayoutWrapper, not sure whether should put again or not? */}
       <ErrorBoundary>
         <Router>
-          <LayoutWrapper nav={nav} auth={auth} snackbar={snackbar}>
+          <LayoutWrapper
+            nav={nav}
+            auth={auth}
+            snackbar={snackbar}
+            setWatchMenu={setWatchMenu}
+            hideAlertDialog={hideAlertDialog}>
             <Switch>
               <PublicRoute exact isAuth={isAuth} path='/login' component={LoginScreen} />
               <PrivateRoute
