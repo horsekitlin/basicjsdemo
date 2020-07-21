@@ -148,7 +148,7 @@ class LoginScreen extends React.PureComponent {
                 color="primary"
                 size="large"
                 onClick={this.handleSubmit}
-                title='登录'
+                text='登录'
               />
             </div>
             <div style={{ marginTop: 20 }}>
