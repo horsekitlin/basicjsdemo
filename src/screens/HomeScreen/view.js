@@ -1,6 +1,5 @@
 import React from "react";
 import { CircularProgress } from '@material-ui/core';
-import HeaderBar from '../../components/HeaderBar';
 import Box from '@material-ui/core/Box';
 
 const HomeScreen = ({ isLoading }) => {
@@ -8,7 +7,6 @@ const HomeScreen = ({ isLoading }) => {
   
   return(
     <Box m={2}>
-      <HeaderBar title='DashBoard'/>
     </Box>
   );
 };
