@@ -10,7 +10,6 @@ import theme from "../../constants/theme";
 
 const MainScreen = (props) => {
   const {
-    isAuth,
     nav,
     auth,
     snackbar,
@@ -37,7 +36,6 @@ const MainScreen = (props) => {
               <PublicRoute
                 exact
                 path="/"
-                isAuth={isAuth}
                 component={HomeScreen}
               />
               <Route exact component={ErrorPage} />
