@@ -7,6 +7,7 @@ import HomeScreen from "../HomeScreen";
 import ErrorBoundary from "../../components/ErrorBoundary";
 import LayoutWrapper from "../../components/LayoutWrapper";
 import theme from "../../constants/theme";
+import LoginScreen from '../LoginScreen';
 
 const MainScreen = (props) => {
   const {
@@ -37,6 +38,11 @@ const MainScreen = (props) => {
                 exact
                 path="/"
                 component={HomeScreen}
+              />
+              <PublicRoute
+                exact
+                path="/login"
+                component={LoginScreen}
               />
               <Route exact component={ErrorPage} />
             </Switch>

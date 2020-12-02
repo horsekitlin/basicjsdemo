@@ -26,7 +26,7 @@ const HomeScreen = () => {
 
   return (
     <List className={classes.root} fullWidth>
-      <ListItem alignItems="flex-start" component="a" href="#">
+      <ListItem alignItems="flex-start" component="a" href="/login">
         <Avatar className={classes.green}>
           <ThreeDRotation />
         </Avatar>

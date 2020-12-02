@@ -1,0 +1,68 @@
+body {
+  background-color: #468;
+}
+
+.card {
+  max-width: 300px;
+  padding: 40px;
+  margin: 100px auto;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: #555;
+  font-weight: bold;
+}
+
+/* .card img {
+  border-radius: 100%;
+  float: right;
+} */
+
+.card hr {
+  opacity: 0.5;
+}
+
+.card input,
+.card select {
+  padding: 10px;
+  margin: 16px 0 8px 8px;
+  border: 1px solid #ccc;
+}
+
+.card input[type="radio"],
+.card label {
+  cursor: pointer;
+}
+
+.card button {
+  min-width: 120px;
+  padding: 12px 18px;
+  margin-top: 24px;
+  background-color: #369;
+  font-size: 18px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: #47a;
+}
+
+.card button[type="reset"] {
+  border: 2px solid #369;
+  background-color: white;
+  color: #369;
+  float: right;
+}
+
+.card button[type="reset"]:hover {
+  background-color: #f0f0f0;
+}
+
+.card a {
+  display: block;
+  margin-top: 8px;
+  color: #369;
+  text-align: right;
+}
